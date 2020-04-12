@@ -7,19 +7,24 @@ COVID19_global_cases_new = COVID19_global_cases.drop(['Province/State','Lat','Lo
 
 print(COVID19_global_cases_new)
 
-COVID19_global_cases_new.to_csv(r'c:\Users\thead\Documents\COVID-19\csse_covid_19_data\csse_covid_19_time_series\COVID19_global_cases_new.csv',index=False)
+COVID19_global_cases_new.to_csv(r'c:\Users\thead\Documents\bootcamp\COVID19_out\COVID19_global_cases_new.csv',index=False)
 
 COVID19_global_cases_new_sum = COVID19_global_cases_new.groupby(['Country/Region']).sum()
 
-COVID19_global_cases_new_sum.to_csv(r'c:\Users\thead\Documents\COVID-19\csse_covid_19_data\csse_covid_19_time_series\COVID19_global_cases_new_sum.csv')
+COVID19_global_cases_new_sum.to_csv(r'c:\Users\thead\Documents\bootcamp\COVID19_out\COVID19_global_cases_new_sum.csv')
+
 
 COVID19_global_cases_new_transpose = COVID19_global_cases_new_sum.T
 
 #COVID19_global_cases_new_transpose = COVID19_global_cases_new_transpose.drop(['Guam','Northern Mariana Islands','American Samoa','Diamond Princess','Grand Princess'], axis=1)
 
-print(COVID19_global_cases_new_transpose)
+print(COVID19_global_cases_new_transpose.head())
 
-COVID19_global_cases_new_transpose.to_csv(r'c:\Users\thead\Documents\COVID-19\csse_covid_19_data\csse_covid_19_time_series\COVID19_global_cases_new_transpose.csv')
+COVID19_global_cases_new_transpose.head().to_csv(r'c:\Users\thead\Documents\bootcamp\COVID19_out\COVID19_global_cases_new_head.csv')
+
+COVID19_global_cases_new_transpose.to_csv(r'c:\Users\thead\Documents\bootcamp\COVID19_out\COVID19_global_cases_new_transpose.csv')
+
+COVID19_global_cases_new_transpose.melt().to_csv(r'c:\Users\thead\Documents\bootcamp\COVID19_out\COVID19_global_cases_melt.csv')
 
 #move on to the deaths spreadsheet
 
@@ -29,11 +34,11 @@ COVID19_global_deaths_new = COVID19_global_deaths.drop(['Province/State','Lat','
 
 print(COVID19_global_deaths_new)
 
-COVID19_global_deaths_new.to_csv(r'c:\Users\thead\Documents\COVID-19\csse_covid_19_data\csse_covid_19_time_series\COVID19_global_deaths_new.csv',index=False)
+COVID19_global_deaths_new.to_csv(r'c:\Users\thead\Documents\bootcamp\COVID19_out\COVID19_global_deaths_new.csv',index=False)
 
 COVID19_global_deaths_new_sum = COVID19_global_deaths_new.groupby(['Country/Region']).sum()
 
-COVID19_global_deaths_new_sum.to_csv(r'c:\Users\thead\Documents\COVID-19\csse_covid_19_data\csse_covid_19_time_series\COVID19_global_deaths_new_sum.csv')
+COVID19_global_deaths_new_sum.to_csv(r'c:\Users\thead\Documents\bootcamp\COVID19_out\COVID19_global_deaths_new_sum.csv')
 
 COVID19_global_deaths_new_transpose = COVID19_global_deaths_new_sum.T
 
@@ -41,4 +46,4 @@ COVID19_global_deaths_new_transpose = COVID19_global_deaths_new_sum.T
 
 print(COVID19_global_deaths_new_transpose)
 
-COVID19_global_deaths_new_transpose.to_csv(r'c:\Users\thead\Documents\COVID-19\csse_covid_19_data\csse_covid_19_time_series\COVID19_global_deaths_new_transpose.csv')
+COVID19_global_deaths_new_transpose.to_csv(r'c:\Users\thead\Documents\bootcamp\COVID19_out\COVID19_global_deaths_new_transpose.csv')
