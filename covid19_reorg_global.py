@@ -9,12 +9,14 @@ print(COVID19_global_cases_new)
 
 COVID19_global_cases_new.to_csv(r'c:\Users\thead\Documents\bootcamp\COVID19_out\COVID19_global_cases_new.csv',index=False)
 
-COVID19_global_cases_new_sum = COVID19_global_cases_new.groupby(['Country/Region']).sum()
+COVID19_global_cases_new_sum = COVID19_global_cases_new.groupby(['Country/Region'],as_index=False).sum()
 
 COVID19_global_cases_new_sum.to_csv(r'c:\Users\thead\Documents\bootcamp\COVID19_out\COVID19_global_cases_new_sum.csv')
 
 
 COVID19_global_cases_new_transpose = COVID19_global_cases_new_sum.T
+
+#COVID19_global_cases_new_transpose = COVID19_global_cases_new_transpose.droplevel(level=0)
 
 #COVID19_global_cases_new_transpose = COVID19_global_cases_new_transpose.drop(['Guam','Northern Mariana Islands','American Samoa','Diamond Princess','Grand Princess'], axis=1)
 
@@ -24,7 +26,7 @@ COVID19_global_cases_new_transpose.head().to_csv(r'c:\Users\thead\Documents\boot
 
 COVID19_global_cases_new_transpose.to_csv(r'c:\Users\thead\Documents\bootcamp\COVID19_out\COVID19_global_cases_new_transpose.csv')
 
-COVID19_global_cases_new_transpose.melt().to_csv(r'c:\Users\thead\Documents\bootcamp\COVID19_out\COVID19_global_cases_melt.csv')
+COVID19_global_cases_new_transpose.melt(var_name='state', value_name='value').to_csv(r'c:\Users\thead\Documents\bootcamp\COVID19_out\COVID19_global_cases_melt.csv')
 
 #move on to the deaths spreadsheet
 
@@ -47,3 +49,6 @@ COVID19_global_deaths_new_transpose = COVID19_global_deaths_new_sum.T
 print(COVID19_global_deaths_new_transpose)
 
 COVID19_global_deaths_new_transpose.to_csv(r'c:\Users\thead\Documents\bootcamp\COVID19_out\COVID19_global_deaths_new_transpose.csv')
+
+COVID19_global_deaths_new_transpose.melt(var_name='country', value_name='value').to_csv(r'c:\Users\thead\Documents\bootcamp\COVID19_out\COVID19_global_deaths_melt.csv')
+print(COVID19_global_deaths_new_transpose.melt(var_name='country', value_name='value'))

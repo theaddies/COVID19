@@ -1,6 +1,6 @@
 import pandas as pd
 #confirmed cases spreadsheet
-
+pd.set_option('display.expand_frame_repr', True)
 COVID19_US_cases = pd.read_csv (r'C:\Users\thead\Documents\COVID-19\csse_covid_19_data\csse_covid_19_time_series\time_series_covid19_confirmed_US.csv')   #read the csv file (put 'r' before the path string to address any special characters in the path, such as '\'). Don't forget to put the file name at the end of the path + ".csv"
 #print (len(df))
 #print(df.describe())
