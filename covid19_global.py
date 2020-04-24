@@ -27,7 +27,8 @@ for index, row in COVID19_global_cases_melt.iterrows():
         COVID19_global_cases_melt.loc[index,'ratio'] = COVID19_global_cases_melt.loc[index]['cases']/COVID19_global_cases_melt.loc[index-1]['cases']
         Cases_1 = COVID19_global_cases_melt.loc[index,'ratio']
         Cases_2 = COVID19_global_cases_melt.loc[(index-1),'ratio']
-        COVID19_global_cases_melt.loc[index,'ratio'] = (Cases_1 + Cases_2) / 2
+        Cases_3 = COVID19_global_cases_melt.loc[(index-2),'ratio']
+        COVID19_global_cases_melt.loc[index,'ratio'] = (Cases_1 + Cases_2 + Cases_3) / 3
 
 COVID19_global_cases_melt = COVID19_global_cases_melt.rename(columns={"index" : "date"})
 
@@ -72,7 +73,8 @@ for index, row in COVID19_global_deaths_melt.iterrows():
         COVID19_global_deaths_melt.loc[index,'ratio'] = COVID19_global_deaths_melt.loc[index]['deaths']/COVID19_global_deaths_melt.loc[index-1]['deaths']
         Cases_1 = COVID19_global_deaths_melt.loc[index,'ratio']
         Cases_2 = COVID19_global_deaths_melt.loc[(index-1),'ratio']
-        COVID19_global_deaths_melt.loc[index,'ratio'] = (Cases_1 + Cases_2) / 2
+        Cases_3 = COVID19_global_deaths_melt.loc[(index-2),'ratio']
+        COVID19_global_deaths_melt.loc[index,'ratio'] = (Cases_1 + Cases_2 + Cases_3) / 3
 
 COVID19_global_deaths_melt = COVID19_global_deaths_melt.rename(columns={"index" : "date"})
 
