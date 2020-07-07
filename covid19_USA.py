@@ -44,12 +44,14 @@ COVID19_US_cases_melt = COVID19_US_cases_transpose.melt(id_vars= 'index', var_na
 print(COVID19_US_cases_melt)
 
 COVID19_US_cases_melt['ratio'] = 1
+COVID19_US_cases_melt['new_cases'] = 0
 
 for index, row in COVID19_US_cases_melt.iterrows():
     if((COVID19_US_cases_melt.loc[index]['cases'] == 0) or (COVID19_US_cases_melt.loc[index-1]['cases'] == 0)):
         COVID19_US_cases_melt.loc[index,'ratio'] = 1
     else:
         COVID19_US_cases_melt.loc[index,'ratio'] = COVID19_US_cases_melt.loc[index]['cases']/COVID19_US_cases_melt.loc[index-1]['cases']
+        COVID19_US_cases_melt.loc[index,'new_cases'] = COVID19_US_cases_melt.loc[index]['cases'] - COVID19_US_cases_melt.loc[index-1]['cases']
         Cases_1 = COVID19_US_cases_melt.loc[index,'ratio']
         Cases_2 = COVID19_US_cases_melt.loc[(index-1),'ratio']
         Cases_3 = COVID19_US_cases_melt.loc[(index-2),'ratio']       
